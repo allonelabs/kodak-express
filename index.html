@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kodak Express — ფოტო სტუდია | პეკინის 36, თბილისი</title>
+  <meta name="description" content="Kodak Express Pekini 36 — Photo Studio, Tbilisi. Passport photos in 3 minutes, printing, custom mugs, t-shirts, VHS conversion. Tbilisi, Saburtalo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #FFD700;
+      --red: #ED1C24;
+      --dark: #111;
+      --cream: #FFFBEB;
+      --warm: #FFF3CD;
+      --text: #1a1a1a;
+      --muted: #666;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', 'Noto Sans Georgian', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.8rem 3rem;
+      background: rgba(255,251,235,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 3px solid var(--yellow);
+      transition: padding 0.3s;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .logo-box {
+      width: 36px; height: 36px;
+      background: var(--red); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--yellow); font-family: 'Archivo Black', sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .logo-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.15rem; color: var(--text);
+    }
+
+    .logo-text span { color: var(--red); }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none; align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    .nav-phone {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--red); color: #fff !important;
+      padding: 0.55rem 1.2rem; border-radius: 6px;
+      font-weight: 700 !important; font-size: 0.85rem !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-phone:hover {
+      transform: translateY(-1px) !important;
+      box-shadow: 0 6px 20px rgba(237,28,36,0.3) !important;
+    }
+
+    .menu-btn {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 28px; height: 20px; position: relative;
+    }
+
+    .menu-btn span {
+      position: absolute; left: 0; width: 100%; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+
+    .menu-btn span:nth-child(1) { top: 0; }
+    .menu-btn span:nth-child(2) { top: 9px; }
+    .menu-btn span:nth-child(3) { top: 18px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 3rem;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(255,215,0,0.15) 0%, transparent 50%),
+        var(--cream);
+    }
+
+    .hero-left h1 {
+      font-family: 'Archivo Black', 'Noto Sans Georgian', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-left h1 .red { color: var(--red); }
+    .hero-left h1 .yellow-u {
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-underline-offset: 6px;
+      text-decoration-thickness: 4px;
+    }
+
+    .hero-sub {
+      font-family: 'Noto Sans Georgian', sans-serif;
+      font-size: 1.1rem; color: var(--muted);
+      margin-top: 1.2rem; line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .hero-badges {
+      display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1rem; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600;
+      background: #fff; border: 1.5px solid #e5e5e5;
+      color: var(--text);
+    }
+
+    .badge.highlight {
+      background: var(--yellow); border-color: var(--yellow); color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 1.8rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.25s; cursor: pointer; border: none;
+    }
+
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: #d4161d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(237,28,36,0.25); }
+
+    .btn-dark { background: var(--dark); color: #fff; }
+    .btn-dark:hover { background: #333; transform: translateY(-2px); }
+
+    .hero-right {
+      position: relative; display: flex; justify-content: center;
+    }
+
+    .hero-img-main {
+      width: 85%; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+      border: 4px solid #fff;
+      transform: rotate(2deg);
+    }
+
+    .hero-img-main img { width: 100%; display: block; }
+
+    .hero-float {
+      position: absolute; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      border: 3px solid #fff;
+    }
+
+    .hero-float-1 {
+      width: 45%; bottom: -20px; left: -20px; transform: rotate(-4deg);
+    }
+
+    .hero-float-2 {
+      width: 35%; top: 10px; right: -10px; transform: rotate(3deg);
+    }
+
+    .hero-float img { width: 100%; display: block; }
+
+    /* ─── SERVICES ─── */
+    .services {
+      padding: 6rem 3rem;
+      background: var(--dark); color: #fff;
+      position: relative;
+    }
+
+    .services::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--yellow), var(--red));
+    }
+
+    .sec-header {
+      text-align: center; margin-bottom: 4rem;
+    }
+
+    .sec-tag {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--yellow); margin-bottom: 0.75rem;
+    }
+
+    .sec-title {
+      font-family: 'Archivo Black', 'Noto Sans Georgian', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .svc {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 1.8rem 1.4rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+
+    .svc:hover {
+      background: rgba(255,215,0,0.08);
+      border-color: rgba(255,215,0,0.2);
+      transform: translateY(-4px);
+    }
+
+    .svc-img {
+      width: 100%; border-radius: 8px; margin-bottom: 1rem;
+      aspect-ratio: 4/3; object-fit: cover;
+    }
+
+    .svc h3 {
+      font-family: 'Noto Sans Georgian', 'Outfit', sans-serif;
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem;
+    }
+
+    .svc p {
+      font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5;
+    }
+
+    .svc-tag {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.25rem 0.6rem; border-radius: 4px;
+      background: rgba(255,215,0,0.15); color: var(--yellow);
+    }
+
+    /* ─── WORK SAMPLES ─── */
+    .samples {
+      padding: 6rem 3rem;
+      background: var(--cream);
+    }
+
+    .samples-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+    }
+
+    .sample-card {
+      border-radius: 12px; overflow: hidden;
+      background: #fff; border: 2px solid #eee;
+      transition: all 0.3s; cursor: pointer;
+    }
+
+    .sample-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-color: var(--yellow);
+    }
+
+    .sample-card img {
+      width: 100%; display: block;
+      aspect-ratio: 1; object-fit: cover;
+    }
+
+    .sample-label {
+      padding: 1rem 1.2rem;
+      font-weight: 600; font-size: 0.9rem;
+    }
+
+    .sample-label small {
+      display: block; font-size: 0.75rem;
+      color: var(--muted); font-weight: 400; margin-top: 0.2rem;
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      padding: 6rem 3rem;
+      background: var(--warm);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1200px; margin: 0 auto;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img {
+      width: 100%; border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      border: 4px solid var(--yellow);
+    }
+
+    .about-text h2 {
+      font-family: 'Archivo Black', 'Noto Sans Georgian', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.1; margin-bottom: 1.5rem;
+    }
+
+    .about-text h2 .red { color: var(--red); }
+
+    .about-text p {
+      color: var(--muted); line-height: 1.8; font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .stats-row {
+      display: flex; gap: 2rem; margin-top: 2rem;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2.5rem; color: var(--red);
+    }
+
+    .stat-lbl {
+      font-size: 0.7rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      padding: 6rem 3rem;
+      background: var(--dark); color: #fff;
+    }
+
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 3rem; align-items: start;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 2.5rem;
+    }
+
+    .contact-card h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.5rem; margin-bottom: 2rem;
+      color: var(--yellow);
+    }
+
+    .c-row {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .c-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--red); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .c-icon svg { width: 18px; height: 18px; }
+
+    .c-row h4 {
+      font-size: 0.65rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.4);
+      margin-bottom: 0.15rem;
+    }
+
+    .c-row p { font-size: 0.95rem; font-weight: 600; }
+
+    .c-row a {
+      color: #fff; text-decoration: none; transition: color 0.2s;
+    }
+
+    .c-row a:hover { color: var(--yellow); }
+
+    .map-wrap {
+      border-radius: 16px; overflow: hidden;
+      border: 3px solid var(--yellow);
+      height: 100%; min-height: 400px;
+    }
+
+    .map-wrap iframe {
+      width: 100%; height: 100%; border: 0; display: block;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 3px solid var(--yellow);
+      padding: 2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      color: rgba(255,255,255,0.3); font-size: 0.8rem;
+    }
+
+    .footer-brand {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem; color: var(--yellow);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0.7rem 1.5rem; }
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(255,251,235,0.97);
+        backdrop-filter: blur(16px);
+        padding: 1.5rem; gap: 1rem;
+        border-bottom: 3px solid var(--yellow);
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem;
+        text-align: center;
+      }
+
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-badges { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .hero-right { margin-top: 2rem; }
+      .hero-float-1 { left: 5px; bottom: -10px; }
+      .hero-float-2 { right: 5px; }
+
+      .services { padding: 4rem 1.5rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .samples { padding: 4rem 1.5rem; }
+      .samples-row { grid-template-columns: 1fr 1fr; }
+
+      .about {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem;
+        gap: 2rem;
+      }
+
+      .contact { padding: 4rem 1.5rem; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .map-wrap { min-height: 300px; }
+
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .samples-row { grid-template-columns: 1fr; }
+      .stats-row { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-box">K</div>
+      <div class="logo-text">Kodak <span>Express</span></div>
+    </a>
+    <ul class="nav-links" id="nav">
+      <li><a href="#services">სერვისები</a></li>
+      <li><a href="#work">ნამუშევრები</a></li>
+      <li><a href="#about">ჩვენ შესახებ</a></li>
+      <li><a href="tel:+995593351064" class="nav-phone">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.11 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        593-35-10-64
+      </a></li>
+    </ul>
+    <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left reveal">
+      <h1>
+        <span class="red">Kodak</span> Express<br>
+        <span class="yellow-u">ფოტო სტუდია</span>
+      </h1>
+      <p class="hero-sub">
+        საბუთის ფოტო 3 წუთში, ფოტოს ბეჭდვა ციფრულ ლაბორატორიაზე, სურათების გადიდება და აღდგენა, მაისურზე და ჭიქაზე ბეჭდვა, ვიდეო კასეტის და ფოტოფირის გაციფრულება.
+      </p>
+      <div class="hero-badges">
+        <span class="badge highlight">📸 3 წუთში</span>
+        <span class="badge">🏠 პეკინის 36</span>
+        <span class="badge">🕐 დიდი გამოცდილება</span>
+      </div>
+      <div class="hero-actions">
+        <a href="tel:+995593351064" class="btn btn-red">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.11 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          დაგვირეკეთ
+        </a>
+        <a href="#services" class="btn btn-dark">სერვისები →</a>
+      </div>
+    </div>
+    <div class="hero-right reveal">
+      <div class="hero-img-main">
+        <img src="images/memories-ad.jpg" alt="Kodak Express — Your memories, Kodak quality">
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="sec-header reveal">
+      <div class="sec-tag">What We Do</div>
+      <h2 class="sec-title">ჩვენი სერვისები</h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc reveal">
+        <img src="images/passport-photos.jpg" alt="Passport photos" class="svc-img">
+        <h3>საბუთის ფოტოს გადაღება</h3>
+        <p>პასპორტის, ID ბარათის, ვიზის ფოტო — მზადაა 3 წუთში.</p>
+        <span class="svc-tag">3 წუთში</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/info-prices.jpg" alt="Photo printing" class="svc-img">
+        <h3>ფოტოს ბეჭდვა ციფრულ ლაბორატორიაზე</h3>
+        <p>ციფრული ლაბორატორია Fujifilm Frontier — ფოტო რომელიც არ ხუნდება. ყველა ზომა.</p>
+        <span class="svc-tag">არ ხუნდება</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/memories-ad.jpg" alt="Photo restoration" class="svc-img">
+        <h3>სურათების გადიდება და აღდგენა</h3>
+        <p>ძველი ფოტოების აღდგენა და გადიდება უმაღლესი ხარისხით.</p>
+        <span class="svc-tag">აღდგენა</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/services-list.jpg" alt="Scanner, copier, printer" class="svc-img">
+        <h3>სკანერი, ქსეროქსი, პრინტერი</h3>
+        <p>ფერადი და შავ-თეთრი პრინტერი, სკანერი, ქსეროქსი — სწრაფი მომსახურება.</p>
+        <span class="svc-tag">ფერადი & შავ-თეთრი</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/sample-mugs.jpg" alt="Custom mugs" class="svc-img">
+        <h3>მაისურზე და ჭიქაზე ბეჭდვა</h3>
+        <p>ნებისმიერი სურათი მაისურზე ან ჭიქაზე — საუკეთესო საჩუქარი.</p>
+        <span class="svc-tag">საჩუქარი</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/vhs-conversion.jpg" alt="VHS to digital" class="svc-img">
+        <h3>ვიდეო კასეტის გაციფრულება</h3>
+        <p>ძველი ვიდეო კასეტების და ფოტოფირის გაციფრულება DVD-ზე ან USB-ზე.</p>
+        <span class="svc-tag">ფოტოფირიც</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/sample-calendar.jpg" alt="Custom calendars" class="svc-img">
+        <h3>კალენდარი</h3>
+        <p>პერსონალიზებული ფოტო კალენდარი თქვენი მოგონებებით.</p>
+        <span class="svc-tag">პერსონალური</span>
+      </div>
+      <div class="svc reveal">
+        <img src="images/green-card.jpg" alt="Green Card photos" class="svc-img">
+        <h3>Green Card ფოტო</h3>
+        <p>ამერიკის ლატარიის სტანდარტის ფოტო — გარანტირებული მიღება.</p>
+        <span class="svc-tag">USA სტანდარტი</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SAMPLES -->
+  <section class="samples" id="work">
+    <div class="sec-header reveal">
+      <div class="sec-tag" style="color:var(--red)">Our Work</div>
+      <h2 class="sec-title">ნამუშევრები</h2>
+    </div>
+    <div class="samples-row">
+      <div class="sample-card reveal">
+        <img src="images/sample-mugs.jpg" alt="Custom mugs with football players">
+        <div class="sample-label">ჭიქები <small>პერსონალური ფოტო ჭიქები</small></div>
+      </div>
+      <div class="sample-card reveal">
+        <img src="images/sample-shirt.jpg" alt="Custom shirt with Georgian flag">
+        <div class="sample-label">მაისური <small>საქართველოს დროშით</small></div>
+      </div>
+      <div class="sample-card reveal">
+        <img src="images/sample-calendar.jpg" alt="Photo calendar 2026">
+        <div class="sample-label">კალენდარი 2026 <small>ბავშვების ფოტოთი</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:var(--warm)">
+    <div class="about">
+      <div class="about-img-wrap reveal">
+        <img src="images/hero-flyer.jpg" alt="Kodak Express Pekini 36" class="about-img">
+      </div>
+      <div class="about-text reveal">
+        <h2>ფოტო სტუდია<br><span class="red">დიდი გამოცდილებით</span></h2>
+        <p>Kodak Express პეკინის 36-ზე თბილისის სანდო ფოტო სტუდიაა. ჩვენ ვინახავთ ქართული ოჯახების მოგონებებს.</p>
+        <p>ჩვენი Fujifilm Frontier ციფრული ლაბორატორია უზრუნველყოფს იმავე მდიდარ, ნათელ ფერებს, რომლებმაც Kodak ლეგენდარული გახადა.</p>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-lbl">სერვისი</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-lbl">წუთში ფოტო</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Find Us</div>
+      <h2 class="sec-title" style="color:#fff">დაგვიკავშირდით</h2>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-card reveal">
+        <h3>საკონტაქტო</h3>
+        <div class="c-row">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3" fill="var(--red)"/></svg>
+          </div>
+          <div>
+            <h4>მისამართი</h4>
+            <p>პეკინის 36, საბურთალო, თბილისი</p>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.11 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>ტელეფონი</h4>
+            <p><a href="tel:+995593351064">593-35-10-64</a></p>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>ელ-ფოსტა</h4>
+            <p><a href="mailto:kodak.print36@gmail.com">kodak.print36@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon" style="background:var(--yellow)">
+            <svg viewBox="0 0 24 24" fill="var(--dark)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>სამუშაო საათები</h4>
+            <p>ორშ — შაბ: 10:00 – 19:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d44.747!3d41.721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7e392d69d%3A0x0!2zUGVraW5pIDM2!5e0!3m2!1sen!2sge!4v1" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Kodak Express</div>
+    <div>პეკინის 36, თბილისი &middot; დიდი გამოცდილებით</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'))
+    );
+  </script>
+
+</body>
+</html>
