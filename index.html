@@ -99,14 +99,7 @@
       overflow:hidden; transition:box-shadow 0.2s, transform 0.2s;
     }
     .svc-card:hover { box-shadow:0 8px 24px rgba(0,0,0,0.06); transform:translateY(-2px); border-color:rgba(245,166,35,0.3); }
-    .svc-visual {
-      width:100%; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-      font-size:3rem; position:relative; overflow:hidden;
-    }
-    .svc-visual::before {
-      content:''; position:absolute; inset:0; opacity:0.07;
-      background:repeating-linear-gradient(45deg, currentColor 0px, currentColor 1px, transparent 1px, transparent 8px);
-    }
+    .svc-card img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
     .svc-card-body { padding:1rem; }
     .svc-card-body h3 { font-size:0.88rem; font-weight:700; margin-bottom:0.25rem; }
     .svc-card-body p { font-size:0.75rem; color:var(--muted); line-height:1.4; }
@@ -137,7 +130,12 @@
       padding:1.5rem; text-align:center; transition:box-shadow 0.2s;
     }
     .why-card:hover { box-shadow:0 8px 24px rgba(0,0,0,0.06); }
-    .why-card .icon { font-size:1.8rem; margin-bottom:0.75rem; }
+    .why-card .icon {
+      width:48px; height:48px; margin:0 auto 0.75rem;
+      background:var(--accent-light); border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .why-card .icon svg { width:22px; height:22px; stroke:var(--accent); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
     .why-card h3 { font-size:0.9rem; font-weight:700; margin-bottom:0.3rem; }
     .why-card p { font-size:0.78rem; color:var(--muted); line-height:1.5; }
 
@@ -264,67 +262,59 @@
       </div>
       <div class="svc-grid">
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#FEE2E2,#FECACA);color:#DC2626">📸</div>
+          <img src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?w=400&h=300&fit=crop" alt="საბუთის ფოტო">
           <div class="svc-card-body">
             <h3>საბუთის ფოტოს გადაღება</h3>
             <p>პასპორტის, ID ბარათის, ვიზის ფოტო — მზადაა 3 წუთში.</p>
-            <span class="tag">3 წუთში</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#DBEAFE,#BFDBFE);color:#2563EB">🖨️</div>
+          <img src="https://images.unsplash.com/photo-1598301257982-0cf014f44142?w=400&h=300&fit=crop" alt="ფოტოს ბეჭდვა">
           <div class="svc-card-body">
             <h3>ფოტოს ბეჭდვა</h3>
             <p>ციფრულ ლაბორატორიაზე რომელიც არ ხუნდება. ყველა ზომა.</p>
-            <span class="tag">არ ხუნდება</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#EDE9FE,#DDD6FE);color:#7C3AED">🔄</div>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop" alt="სურათების აღდგენა">
           <div class="svc-card-body">
             <h3>სურათების გადიდება და აღდგენა</h3>
             <p>ძველი ფოტოების აღდგენა და გადიდება უმაღლესი ხარისხით.</p>
-            <span class="tag">აღდგენა</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#D1FAE5,#A7F3D0);color:#059669">📄</div>
+          <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=300&fit=crop" alt="სკანერი პრინტერი">
           <div class="svc-card-body">
             <h3>სკანერი, ქსეროქსი, პრინტერი</h3>
             <p>ფერადი და შავ-თეთრი პრინტერი, სკანერი, ქსეროქსი.</p>
-            <span class="tag">ფერადი & შავ-თეთრი</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#FEF3C7,#FDE68A);color:#D97706">👕</div>
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=300&fit=crop" alt="ჭიქაზე ბეჭდვა">
           <div class="svc-card-body">
             <h3>მაისურზე და ჭიქაზე ბეჭდვა</h3>
             <p>ნებისმიერი სურათი მაისურზე ან ჭიქაზე — საუკეთესო საჩუქარი.</p>
-            <span class="tag">საჩუქარი</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#CCFBF1,#99F6E4);color:#0D9488">📼</div>
+          <img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400&h=300&fit=crop" alt="VHS გაციფრულება">
           <div class="svc-card-body">
             <h3>ვიდეო კასეტის გაციფრულება</h3>
             <p>ძველი ვიდეო კასეტების და ფოტოფირის გაციფრულება DVD/USB-ზე.</p>
-            <span class="tag">ფოტოფირიც</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#FCE7F3,#FBCFE8);color:#DB2777">📅</div>
+          <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&h=300&fit=crop" alt="კალენდარი">
           <div class="svc-card-body">
             <h3>კალენდარი</h3>
             <p>პერსონალიზებული ფოტო კალენდარი თქვენი მოგონებებით.</p>
-            <span class="tag">პერსონალური</span>
           </div>
         </div>
         <div class="svc-card">
-          <div class="svc-visual" style="background:linear-gradient(135deg,#CFFAFE,#A5F3FC);color:#0891B2">🗽</div>
+          <img src="https://images.unsplash.com/photo-1551592398-c320012bc1c6?w=400&h=300&fit=crop" alt="Green Card">
           <div class="svc-card-body">
             <h3>Green Card ფოტო</h3>
             <p>ამერიკის ლატარიის სტანდარტის ფოტო — გარანტირებული მიღება.</p>
-            <span class="tag">USA სტანდარტი</span>
           </div>
         </div>
       </div>
@@ -342,15 +332,12 @@
     <div class="port-grid">
       <div class="port-card">
         <img src="images/sample-mugs.jpg" alt="ჭიქები">
-        <div class="caption">პერსონალური ჭიქები <small>ფეხბურთელების ფოტოებით</small></div>
       </div>
       <div class="port-card">
         <img src="images/sample-shirt.jpg" alt="მაისური">
-        <div class="caption">მაისურზე ბეჭდვა <small>საქართველოს რუკით</small></div>
       </div>
       <div class="port-card">
         <img src="images/sample-calendar.jpg" alt="კალენდარი">
-        <div class="caption">კალენდარი 2026 <small>ბავშვების ფოტოთი</small></div>
       </div>
     </div>
   </div>
@@ -365,17 +352,17 @@
       </div>
       <div class="why-grid">
         <div class="why-card">
-          <div class="icon">🖨️</div>
+          <div class="icon"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1"/><line x1="9" y1="18" x2="15" y2="18"/><circle cx="12" cy="10" r="3"/></svg></div>
           <h3>Fujifilm Frontier</h3>
           <p>ციფრული ლაბორატორია — ფოტო რომელიც არ ხუნდება</p>
         </div>
         <div class="why-card">
-          <div class="icon">⚡</div>
+          <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <h3>სწრაფი მომსახურება</h3>
           <p>საბუთის ფოტო 3 წუთში, ბეჭდვა ადგილზე</p>
         </div>
         <div class="why-card">
-          <div class="icon">📍</div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <h3>პეკინის 36</h3>
           <p>საბურთალო, თბილისი — ადვილად მისაწვდომი</p>
         </div>
